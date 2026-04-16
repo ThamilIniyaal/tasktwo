@@ -1,27 +1,20 @@
 pipeline {
     agent any
 
-    parameters {
-        choice(name: 'ENVIRONMENT', choices: ['dev', 'test'], description: 'Select environment')
-    }
-
     stages {
-
         stage('Checkout') {
             steps {
-                git 'https://github.com/ThamilIniyaal/tasktwo.git'
+                git branch: 'main', url: 'https://github.com/ThamilIniyaal/tasktwo.git'
             }
         }
-
         stage('Build') {
             steps {
-                echo "Building in ${params.ENVIRONMENT} environment..."
+                echo "Building..."
             }
         }
-
         stage('Test') {
             steps {
-                echo "Testing in ${params.ENVIRONMENT} environment..."
+                echo "Testing..."
             }
         }
     }
